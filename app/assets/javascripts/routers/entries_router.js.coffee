@@ -5,7 +5,7 @@ class BackboneRails.Routers.Entries extends Backbone.Router
 
   initialize: ->
     @collection = new BackboneRails.Collections.Entries()
-    @collection.fetch()
+    @collection.fetch({ reset: true })
 
   index: ->
     view = new BackboneRails.Views.EntriesIndex(collection: @collection)

@@ -6,12 +6,19 @@ class BackboneRails.Views.EntriesIndex extends Backbone.View
     'submit #new_entry': 'createEntry'
 
   initialize: ->
-    @collection.on('sync', @render, this)
+    @collection.on('reset', @render, this)
+    @collection.on('add', @appendEntry, this)
 
   render: ->
-    $(@el).html(@template(entries: @collection))
+    $(@el).html(@template())
+    @collection.each(@appendEntry)
     this
+
+  appendEntry: (entry) ->
+    view = new BackboneRails.Views.Entry(model: entry)
+    $('#entries').append(view.render().el)
 
   createEntry: (event) ->
     event.preventDefault()
     @collection.create name: $('#new_entry_name').val()
+    $('#new_entry')[0].reset()
