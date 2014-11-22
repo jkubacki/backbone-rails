@@ -1,4 +1,4 @@
-class EntriesContro ller < ApplicationController
+class EntriesController < ApplicationController
   respond_to :json
 
   def index

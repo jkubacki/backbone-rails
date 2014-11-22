@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :entries
+
+  scope "api" do
+    resources :entries
+  end
 
   root 'application#index'
 end
