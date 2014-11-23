@@ -6,7 +6,7 @@ window.BackboneRails =
 #  initialize: -> alert 'Hello from Backbone!'
   initialize: ->
     new App.Routers.Entries()
-    Backbone.history.start()
+    Backbone.history.start(pushState: true)
 
 window.App = window.BackboneRails
 

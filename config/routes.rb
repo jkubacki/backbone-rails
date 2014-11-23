@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   end
 
   root 'application#index'
+  match '*path', to: 'application#index', via: [:get, :post]
 end
